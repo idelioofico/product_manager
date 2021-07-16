@@ -1,0 +1,65 @@
+﻿@model product_manager.Models.VM.ProductVM;
+
+@{
+    ViewData["Title"] = "Add product";
+}
+
+<div class="container p-3">
+    <div class="form-group row">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    </div>
+    <div class="form-group">
+       
+        <form asp-controller="Product" asp-action="Create" method="post">
+
+            <div class="form-group row">
+                <div class="col col-6">
+                    <label asp-for="Product.Name"></label>
+                    <input type="text" asp-for="Product.Name" class="form-control " />
+                    <span class="text-danger" asp-validation-for="Product.Name"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col col-6">
+                    <label asp-for="Product.Price"></label>
+                    <input type="number" asp-for="Product.Price" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Product.Price"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col col-6">
+                    <label asp-for="Product.ProductCategoryId"></label>
+                    <select  asp-for="Product.ProductCategoryId" class="form-control" asp-items="@Model.ProductCategory">
+                    <option>Select...</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Product.ProductCategoryId"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col col-6">
+                    <label asp-for="Product.Description"></label>
+                    <input type="text" asp-for="Product.Description" class="form-control " />
+                    <span class="text-danger" asp-validation-for="Product.Description"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col col-6">
+                    <div class="text-right">
+                        <button type="reset" class="btn btn-dark">Clear</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts{
+@{ <partial name="_ValidationScriptsPartial" /> }
+ }
